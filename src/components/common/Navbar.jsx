@@ -158,18 +158,6 @@ export default function Navbar({ onOpenBookingModal }) {
               {/* Subtle Vertical Divider */}
               <div className={`h-4 w-[1px] ${isDarkHero ? 'bg-white/20' : 'bg-slate-200'}`} />
 
-              {/* Crown Icon Circle (Actor TSK Royalty) */}
-              <div 
-                className={`w-7 h-7 rounded-full flex items-center justify-center shadow-xs backdrop-blur-sm ${
-                  isDarkHero 
-                    ? 'bg-black/40 border border-amber-400/50 text-amber-300' 
-                    : 'bg-amber-50 border border-amber-200 text-amber-600'
-                }`}
-                title="Actor TSK • 15+ Yrs Stage Legacy"
-              >
-                <Crown className="w-3.5 h-3.5" />
-              </div>
-
               {/* Instagram Circle */}
               <a
                 href={BRAND_DATA.contact.instagram}
