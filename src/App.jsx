@@ -14,6 +14,9 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
+import ScrollToTop from './components/common/ScrollToTop';
 
 function AppContent() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
@@ -21,6 +24,9 @@ function AppContent() {
   return (
     <div className="relative min-h-screen bg-[#F8F9FC] text-slate-800 font-sans selection:bg-amber-400 selection:text-slate-900">
       
+      {/* Scroll to Top on Page Route Change */}
+      <ScrollToTop />
+
       {/* Background Soft Ambient Particle Canvas */}
       <ParticleBackground />
 
@@ -35,6 +41,8 @@ function AppContent() {
           <Route path="/services" element={<ServicesPage onOpenBookingModal={() => setIsBookingModalOpen(true)} />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-conditions" element={<TermsPage />} />
         </Routes>
       </main>
 

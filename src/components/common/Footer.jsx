@@ -124,10 +124,20 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-teal-200/50 text-center sm:text-left">
+        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-teal-200/60 text-center sm:text-left">
           <p>
             © {currentYear} TSK Entertainments • "{BRAND_DATA.tagline}"
           </p>
+
+          <div className="flex items-center gap-3 text-[11px] text-teal-200/70">
+            <Link to="/privacy-policy" className="hover:text-teal-200 hover:underline transition-colors">
+              Privacy Policy
+            </Link>
+            <span>•</span>
+            <Link to="/terms-conditions" className="hover:text-teal-200 hover:underline transition-colors">
+              Terms & Conditions
+            </Link>
+          </div>
 
           <button
             onClick={scrollToTop}

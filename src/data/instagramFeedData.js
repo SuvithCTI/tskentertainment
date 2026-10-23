@@ -21,7 +21,9 @@ export const INSTAGRAM_POSTS = [
     caption: "When Actor TSK takes the mic, energy goes 10x! 🔥 Massive corporate star night in Chennai. We guarantee you the applause! #TSKEntertainments #ActorTSK #CorporateGala #VijayTV #EventPlanning",
     date: "2 days ago",
     thumbnail: "/images/instagram/corporate_star_night.jpg",
-    category: "Corporate",
+    category: "Corporate Gala",
+    serviceId: "corporate-galas",
+    serviceName: "Corporate Galas & Star Awards",
     tags: ["#ActorTSK", "#CorporateNight", "#ChennaiEvents"]
   },
   {
@@ -33,7 +35,9 @@ export const INSTAGRAM_POSTS = [
     caption: "Fairytale royal bridal entry with golden cold pyros and ethereal dry ice clouds! 💍✨ Wishing the newlyweds endless happiness. Crafted with love by TSK Entertainments. #RoyalWedding #BridalEntry #ChennaiWeddings",
     date: "4 days ago",
     thumbnail: "/images/instagram/royal_bridal_entry.jpg",
-    category: "Weddings",
+    category: "Royal Wedding",
+    serviceId: "royal-weddings",
+    serviceName: "Grand Weddings & Royal Receptions",
     tags: ["#WeddingDecor", "#BridalEntry", "#GrandWedding"]
   },
   {
@@ -45,7 +49,9 @@ export const INSTAGRAM_POSTS = [
     caption: "The crowd couldn't stop laughing! 🤣 Unfiltered KPY Standup session at this grand Sangeet evening. Star television artists organized end-to-end by our artist desk! #KPY #TamilComedy #StandupLive #TSK",
     date: "1 week ago",
     thumbnail: "/images/instagram/kpy_live_comedy.jpg",
-    category: "Celebrity",
+    category: "Live Comedy",
+    serviceId: "live-stage-comedy",
+    serviceName: "Live Comedy & Mimicry Shows",
     tags: ["#KPYStars", "#LiveComedy", "#SangeetFun"]
   },
   {
@@ -57,7 +63,9 @@ export const INSTAGRAM_POSTS = [
     caption: "High-voltage beats & laser beam fiesta! ⚡ Celebrity DJs, moving heads, and golden pyros turning this Sangeet into an unforgettable arena concert! #SangeetNight #DJFiesta #ConcertProduction",
     date: "1 week ago",
     thumbnail: "/images/instagram/sangeet_dj_fiesta.jpg",
-    category: "Concerts",
+    category: "Concert & DJ",
+    serviceId: "concerts-dj-sound",
+    serviceName: "Concerts, DJ & Live Music Bands",
     tags: ["#SangeetDJ", "#ConcertBeats", "#LaserShow"]
   },
   {
@@ -69,7 +77,9 @@ export const INSTAGRAM_POSTS = [
     caption: "Super Singer star performing soul-stirring melodies live! Backstage coordination and technical rider handled by our artist management desk. #SuperSinger #PlaybackSinger #LiveMusic #TSK",
     date: "2 weeks ago",
     thumbnail: "/images/instagram/super_singer_concert.jpg",
-    category: "Celebrity",
+    category: "Celebrity Management",
+    serviceId: "celebrity-management",
+    serviceName: "Celebrity & Artist Management",
     tags: ["#LiveMusic", "#ArtistManagement", "#Chennai"]
   },
   {
@@ -81,7 +91,9 @@ export const INSTAGRAM_POSTS = [
     caption: "Intricate floral temple mandap architecture blending royal South Indian aesthetics with contemporary warm lighting. Every detail perfected for the big day! #MandapDesign #WeddingStyling #LuxuryWeddings",
     date: "2 weeks ago",
     thumbnail: "/images/instagram/temple_floral_mandap.jpg",
-    category: "Weddings",
+    category: "Mandap Architecture",
+    serviceId: "royal-weddings",
+    serviceName: "Grand Weddings & Royal Receptions",
     tags: ["#FloralMandap", "#TraditionalWedding", "#LuxuryEvents"]
   }
 ];

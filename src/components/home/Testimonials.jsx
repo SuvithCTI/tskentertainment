@@ -31,7 +31,7 @@ export default function Testimonials() {
   const current = reviews[currentIndex];
 
   return (
-    <section className="py-4 sm:py-5 bg-[#F8F9FC]">
+    <section className="pt-2 pb-4 sm:py-5 bg-[#F8F9FC]">
       <div className="w-full max-w-[1550px] mx-auto px-4 sm:px-8 lg:px-12">
         
         {/* Main Luxury Testimonials Showcase Container in Light Purple */}

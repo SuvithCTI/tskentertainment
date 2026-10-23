@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SERVICES_DATA, SERVICES_CATEGORIES } from '../../data/servicesData';
 import { useTheme } from '../../context/ThemeContext';
@@ -116,8 +117,28 @@ function ServiceImageCarousel({ images, title, cardIndex }) {
 
 export default function ServicesSection({ onOpenBookingModal }) {
   const { currentTheme } = useTheme();
+  const [searchParams] = useSearchParams();
+  const serviceParam = searchParams.get('service');
   const [selectedCategory, setSelectedCategory] = useState("All Services");
   const [activeModalService, setActiveModalService] = useState(null);
+
+  // Automatically open modal and scroll to card if linked from Instagram Feed or direct URL
+  useEffect(() => {
+    if (serviceParam) {
+      const match = SERVICES_DATA.find((s) => s.id === serviceParam);
+      if (match) {
+        setSelectedCategory("All Services");
+        setActiveModalService(match);
+        const timer = setTimeout(() => {
+          const el = document.getElementById(`service-${serviceParam}`);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 150);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [serviceParam]);
 
   const filteredServices = selectedCategory === "All Services"
     ? SERVICES_DATA
@@ -152,50 +173,58 @@ export default function ServicesSection({ onOpenBookingModal }) {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {filteredServices.map((service, index) => (
-            <div
-              key={service.id}
-              onClick={() => setActiveModalService(service)}
-              className="group bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer"
-            >
-              {/* Auto-moving 3-Image Carousel */}
-              <ServiceImageCarousel 
-                images={service.images || [service.image]} 
-                title={service.title} 
-                cardIndex={index} 
-              />
+          {filteredServices.map((service, index) => {
+            const isTargeted = serviceParam === service.id;
+            return (
+              <div
+                id={`service-${service.id}`}
+                key={service.id}
+                onClick={() => setActiveModalService(service)}
+                className={`group bg-white rounded-3xl border overflow-hidden shadow-xs hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer ${
+                  isTargeted 
+                    ? 'border-amber-500 ring-2 ring-amber-400/80 shadow-lg' 
+                    : 'border-slate-200/90'
+                }`}
+              >
+                {/* Auto-moving 3-Image Carousel */}
+                <ServiceImageCarousel 
+                  images={service.images || [service.image]} 
+                  title={service.title} 
+                  cardIndex={index} 
+                />
 
-              {/* Clean Minimal Info */}
-              <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-base sm:text-lg font-extrabold text-black group-hover:text-amber-600 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-xs text-black font-semibold mt-1.5 leading-relaxed line-clamp-2">
-                    {service.tagline}
-                  </p>
+                {/* Clean Minimal Info */}
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-base sm:text-lg font-extrabold text-black group-hover:text-amber-600 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-xs text-black font-semibold mt-1.5 leading-relaxed line-clamp-2">
+                      {service.tagline}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
+                    <span className="text-xs font-bold text-amber-600 group-hover:underline flex items-center gap-1.5">
+                      <span>View Details & Packages</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onOpenBookingModal();
+                      }}
+                      className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-800 transition-colors"
+                    >
+                      Book
+                    </button>
+                  </div>
+
                 </div>
-
-                <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-xs font-bold text-amber-600 group-hover:underline flex items-center gap-1.5">
-                    <span>View Details & Packages</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                  </span>
-
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onOpenBookingModal();
-                    }}
-                    className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-800 transition-colors"
-                  >
-                    Book
-                  </button>
-                </div>
-
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
